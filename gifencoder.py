@@ -68,7 +68,11 @@ class GIFEncoder:
         self.color_table = np.array(divide(r, g, b, self.color_table_size))
 
     def make_kmeans_color_table(self):
-        raise NotImplementedError()
+        kmeans = cluster.MiniBatchKMeans(self.color_table_size, n_init=4)
+        data = np.reshape(self.img, (-1,3))
+        kmeans.fit(data)
+        self.color_table = np.array(kmeans.cluster_centers_, dtype=np.uint8)
+
 
     def find_nearest_color_index(self, rgb_vec):
         distances = np.square(
