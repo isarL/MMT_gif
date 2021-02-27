@@ -67,8 +67,14 @@ class GIFEncoder:
                 return l
         self.color_table = np.array(divide(r, g, b, self.color_table_size))
 
-    def make_kmeans_color_table(self):
-        raise NotImplementedError()
+    def make_kmeans_color_table(self): #HELP
+        #raise NotImplementedError()
+        print(self.img[0:15, : ,:])
+        print("2d")
+        print(self.img[0:15,:, 0:2])
+        kmeans = cluster.MiniBatchKMeans(self.color_table_size, n_init=4)
+        kmeans.fit(self.img)
+        #self.color_table = kmeans.transform(self.img)
 
     def find_nearest_color_index(self, rgb_vec):
         distances = np.square(
@@ -86,9 +92,75 @@ class GIFEncoder:
                 self.color_table_indices[row] = self.find_nearest_color_index(self.img[row])
                 self.img_coded[row] = self.color_table[self.color_table_indices[row]]
         elif dithering == 1:
-            raise NotImplementedError()
+            self.color_table_indices = np.zeros((self.img_dims[0],
+                self.img_dims[1]), dtype=np.uint8)
+            self.img_coded = self.img.astype(np.float64, copy= False)
+            for rij in range(self.img_dims[0]):
+                self.color_table_indices[rij] = self.find_nearest_color_index(self.img[rij])
+                for kolom in range(self.img_dims[1]):
+                    old_pixel = np.clip(self.img_coded[rij, kolom], 0, 255)
+                    new_pixel = self.color_table[self.find_nearest_color_index(old_pixel)]
+                    self.img_coded[rij, kolom] = new_pixel
+                    qerr = old_pixel - new_pixel
+                    if rij != (self.img_dims[0]-1) :
+                        self.img_coded[rij+1, kolom] += qerr * 7/16
+                        if kolom != (self.img_dims[1] - 1):
+                            self.img_coded[rij+1, kolom+1] += qerr * 1/16
+
+                    if kolom != (self.img_dims[1] - 1):
+                        self.img_coded[rij, kolom+1] += qerr * 5/16
+                        if (rij != 0):
+                            self.img_coded[rij-1, kolom+1] += qerr * 3/16
+
+            self.img_coded.astype(np.uint8, copy= False)
+
+
+
+            #raise NotImplementedError()
         elif dithering == 2:
-            raise NotImplementedError()
+            self.color_table_indices = np.zeros((self.img_dims[0],
+                self.img_dims[1]), dtype=np.uint8)
+            self.img_coded = self.img.astype(np.float64, copy= False)
+            matrix = 1/48 * np.array([[0,0,0,7,5],[3,5,7,5,3], [1,3,5,3,1]])
+            for rij in range(self.img_dims[0]):
+                self.color_table_indices[rij] = self.find_nearest_color_index(self.img[rij])
+                for kolom in range(self.img_dims[1]):
+                    old_pixel = np.clip(self.img_coded[rij, kolom], 0, 255)
+                    new_pixel = self.color_table[self.find_nearest_color_index(old_pixel)]
+                    self.img_coded[rij, kolom] = new_pixel
+                    qerr = old_pixel - new_pixel
+
+                    if rij != (self.img_dims[0]-1) :
+                        self.img_coded[rij+1, kolom] += qerr * 7/48
+                        if kolom != (self.img_dims[1] - 1):
+                            self.img_coded[rij+1, kolom+1] += qerr * 5/48
+                            if kolom != (self.img_dims[1] - 2):
+                                self.img_coded[rij+1, kolom+2] += qerr * 3/48
+                        if rij != (self.img_dims[0]-2) :
+                            self.img_coded[rij+2, kolom] += qerr * 5/48
+                            if kolom != (self.img_dims[1] - 1):
+                                self.img_coded[rij+2, kolom+1] += qerr * 3/48
+                                if kolom != (self.img_dims[1] - 2):
+                                    self.img_coded[rij+2, kolom+2] += qerr * 1/48
+                    if rij != 0:
+                        if kolom != (self.img_dims[1] - 1):
+                            self.img_coded[rij-1, kolom+1] += qerr * 5/48
+                            if kolom != (self.img_dims[1] - 2):
+                                self.img_coded[rij-1, kolom+2] += qerr * 3/48
+                        if rij != 1:
+                            if kolom != (self.img_dims[1] - 1):
+                                self.img_coded[rij-2, kolom+1] += qerr * 3/48
+                                if kolom != (self.img_dims[1] - 2):
+                                    self.img_coded[rij-2, kolom+2] += qerr * 1/48
+
+                    if kolom != (self.img_dims[1] - 1):
+                        self.img_coded[rij, kolom+1] += qerr * 7/48
+                        if kolom != (self.img_dims[1] - 2):
+                            self.img_coded[rij, kolom+2] += qerr * 5/48 
+
+
+            self.img_coded.astype(np.uint8, copy= False)
+            #raise NotImplementedError()
         else:
             raise Exception('Dithering method should be 0, 1, or 2')
 
