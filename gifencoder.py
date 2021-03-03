@@ -6,7 +6,8 @@ from sklearn import cluster
 
 def calculate_psnr(img_A, img_B):
     n, m, _= img_A.shape
-    MSE = np.sum((1/(m*n*3))*np.square(img_A-img_B)) #als ik (1/(m*n*3)) erbuiten zet krijg ik soms negatieve getallen, ik denk door overflow
+    MSE = np.ulonglong(np.sum((1/(m*n*3))*np.square(img_A-img_B))) #als ik (1/(m*n*3)) erbuiten zet krijg ik soms negatieve getallen, ik denk door overflow
+    print(MSE)
     return 10*np.log10(255*255/MSE)
 
 class GIFEncoder:
