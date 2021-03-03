@@ -1,3 +1,3 @@
-1) Bij een grotere b zullen de afbeeldingen er steeds beter uitzien. De kleuren komen beter overeen en de overgangen tussen de kleuren zullen ook beter zijn.
+1) Bij een grotere b zien de afbeeldingen er steeds beter uit; de kleuren komen beter overeen en de overgangen tussen de kleuren is vloeiender.
 
-2) Je bekomt steeds een ander resultaat, dit is omdat het kleurenpalet momenteel random gekozen wordt.
+2) Er wordt steeds een ander resultaat bekomen, dit komt doordat het kleurenpalet momenteel random gekozen wordt.
