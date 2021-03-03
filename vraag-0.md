@@ -1,3 +1,3 @@
-1) Bij een grotere b zullen de afbeeldingen er steeds beter uitzien. De kleuren komen beter overeen en de overgangen tussen de kleuren zullen ook beter zijn.
+Door met numpy-rijen te werken, kunnen deze in 1 bewerking van elkaar afgetrokken worden. Dit resultaat is opnieuw een numpy-rij, waardoor deze ook in 1 keer gekwadrateerd kan worden en er vervolgens broadcasting kan plaatsvinden van de factor 1/(m*n*3). Zo wordt de MSE berekend. Vervolgens kan de log van een numpy-rij genomen worden en weer een broadcast van de factor 10 plaatsvinden. Zo wordt de PSNR bepaald.
 
-2) Je bekomt steeds een ander resultaat, dit is omdat het kleurenpalet momenteel random gekozen wordt.
+Om hier dus een vlotte werking te verkijgen is het gebruik van numpy-rijen, met mogelijke broadcasts en de toepassingen ervan.
