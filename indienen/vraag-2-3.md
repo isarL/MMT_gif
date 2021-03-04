@@ -1,0 +1,10 @@
+BITS = 2
+Bij 2 bits, zijn er 4 mogelijke, random gekozen kleuren uit de oorspronkelijke afbeelding, waarmee de hele afbeelding gecodeerd wordt. Deze output heeft een PSNR van 16.459 dB en heeft een slechte kwaliteit. Er zijn niet veel details zichtbaar en de mensen en het water kunnen amper onderscheiden worden. De PSNR is redelijk laag, wat ook te zien is aan de afbeelding, aangezien deze niet goed lijkt op de oorspronkelijke; er zijn veel verschillen.
+
+BITS = 5
+Bij 5 bits, zijn er 32 mogelijke, random gekozen kleuren uit de afbeelding om de afbeelding te coderen. Deze output heeft een PSNR van 26.801 dB. De kwaliteit van de afbeelding is al veel beter dan bij 2 bits, maar nog steeds niet heel goed. De mensen kunnen al beter onderscheiden worden, maar hun huid en gezicht is niet wat het zou moeten zijn. De PSNR is hoger dan bij 2 bits, wat ook te zien is aan de afbeelding. DE afbeelding kodim14_randomsampling5 lijkt ook meer op de originele afbeelding dan kodim14_randomsampling2 en heeft dus ook een hogere PSNR.
+
+BITS = 8
+Bij 8 bits, zijn er 256 mogelijke, random gekozen kleuren uit de afbeelding om deze te coderen. De output van de codering met 8 bits is te zien in figuur kodim14_randomsampling8. Hier is te zien dat de afbeelding zeer sterk lijkt op de oorspronkelijke afbeelding, dus van een goede kwaliteit is. De PSNR is 33.060 dB, wat niet zo hoog lijkt, terwijl de gelijkenis voor het oog sterk is. Dit is te wijten dat ons oog niet zo gedetailleerd kleuren bekijkt. 
+
+Na vergelijken blijkt dat coderen met 8 bits een betere kwaliteit en hogere PSNR-waarde oplevert en coderen met 2 bits de minste kwaliteit en laagste PSNR-waarde. Dit is logisch, aangezien met 8 bits 256 kleuren gebruikt worden, die ook in de figuur voorkomen, dus is het gebruik van kleuren en ook de afbeelding van andere kleuren op kleuren in de tabel beter, aangezien de kans groter is dat een naburig kleur zich in de tabel bevindt.

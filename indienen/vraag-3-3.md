@@ -1,0 +1,2 @@
+De bestandgroottes zijn voor beide implementaties gelijk. Voor median-cut bedragen ze minder dan voor de gray-scale.
+Het feit dat bij dithering geen extra geheugen nodig is, is te weiten aan het feit dat de color-table niet groter wordt, evenals het aantal pixels in de foto's. Dithering geeft gewoon de illusie van meer kleuren in de afbeelding.
