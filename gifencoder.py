@@ -6,8 +6,7 @@ from sklearn import cluster
 
 def calculate_psnr(img_A, img_B):
     n, m, _= img_A.shape
-    MSE = np.ulonglong(np.sum((1/(m*n*3))*np.square(img_A-img_B))) #als ik (1/(m*n*3)) erbuiten zet krijg ik soms negatieve getallen, ik denk door overflow
-    print(MSE)
+    MSE = np.ulonglong(np.sum((1/(m*n*3))*np.square(img_A-img_B))) 
     return 10*np.log10(255*255/MSE)
 
 class GIFEncoder:
@@ -120,7 +119,6 @@ class GIFEncoder:
             self.color_table_indices = np.zeros((self.img_dims[0],
                 self.img_dims[1]), dtype=np.uint8)
             self.img_coded = self.img.astype(np.float64, copy= False)
-            matrix = 1/48 * np.array([[0,0,0,7,5],[3,5,7,5,3], [1,3,5,3,1]])
             for rij in range(self.img_dims[0]):
                 self.color_table_indices[rij] = self.find_nearest_color_index(self.img[rij])
                 for kolom in range(self.img_dims[1]):
