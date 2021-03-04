@@ -1,1 +1,0 @@
-Bij de “minimized average error” diffusie dithering methode komt de schaduw nog beter uit en zijn de overgangen vloeiender. Door deze schaduw (donker, scherper) lijkt de figuur levendiger en is deze bijgevolg mooier. Dithering 2 heeft dus onze voorkeur, omdat deze de figuur echt beter tot leven brengt, de schaduwen beter maakt en de kleuren mooier laat overgaan.

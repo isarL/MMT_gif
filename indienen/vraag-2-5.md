@@ -1,8 +1,0 @@
-BITS = 2
-De kleuren in de output zijn geel en drie grijswaarden. De kwaliteit is niet super, maar details zijn wel nog te onderscheiden, ook in het water. De PSNR bedraagt 21.414 dB, wat al hoog is voor 2 bits. Dit is te begrijpen, aangezien als kleuren de centra van de clusters gebruikt worden en alle kleuren dus relatief dichtbij het centrum van hun cluster liggen. Door de kleuren te kiezen wordt de afstand tussen de kleuren en het kleur waarop ze afgebeeld worden minimaal gemaakt, voor een specifiek aantal bits, waardoor de PSNR dus hoger ligt.
-
-BITS = 5
-Bij 5 bits zijn er al veel details zichtbaar, zowel in het water als bij de mensen. De kleurovergangen zijn echter nog niet optimaal. De PSNR bedraagt 30.119 dB, wat al hoog is en dus zegt dat de afbeelding al redelijk goed lijkt op de oorspronkelijke afbeelding. Er is dus zowel goede kwaliteit en een hoge PSNR-waarde, wat ook weer te begrijpen is door de keuze van de kleuren in de color-tabel. Door het centrum van de clusters te nemen, worden de elementen die tot die cluster horen, en dus op hetzelfde kleur worden afgebeeld, minimaal gewijzigd. De afstand van alle elementen uit de cluster tot haar centrum is minimaal.
-
-BITS = 8
-Bij 8 bits zijn er heel veel details zichtbaar, ook zijn de kleurovergangen vloeibaar. De PSNR bedraagt 37.138 dB, wat de hoogste waarde is van alle methoden om een color-tabel aan te maken. Dit is logisch, nogmaals te verklaren aan de hand van de clusters en hun centrum. Per kleur/groep van elementen die op hetzelfde kleur afgebeeld worden, wordt het meest optimale element uit de afbeelding gekozen om deze groep voor te stellen. Zo is er per element, rekening houdend met hoeveel het voorkomt, een minimale distortie.
